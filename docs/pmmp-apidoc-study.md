@@ -32,7 +32,7 @@
 
 ## 3. 文档是怎么来的
 
-- 全部文档基于**本仓库源码实测**：用脚本扫描 6 个版本的 `pocketmine/` 目录，抽取类声明、方法签名、事件清单、协议包、命令、注册锚点（含真实行号）。
+- 全部文档基于**本仓库源码实测**：用脚本扫描 6 个版本的 `Genisys` ，抽取类声明、方法签名、事件清单、协议包、命令、注册锚点（含真实行号）。
 - `core-api.md` 的注册锚点行号、启动链路步骤、`callEvent` 派发热点，均来自源码扫描结果，**可直接点进源码核对**。
 
 ---
@@ -67,7 +67,7 @@ set PORT=9000 && py server.py   # 换端口
 
 本站文档对应的是 **PE 0.13–1.0.0 / 协议 38–100** 的老分支。而现代 PocketMine-MP（`apidoc.pmmp.io`，约 MCPE 1.21+ / 协议 700+）是**另一代**，方法签名、命名空间、注册方式都变了，**不能直接照搬**。常见代差：
 
-| 维度 | 现代 PMMP（apidoc） | 你的 Genisys | 正确做法 |
+| 维度 | 现代 PMMP（apidoc） | Genisys | 正确做法 |
 |------|--------------------|--------------|----------|
 | 方块注册 | `BlockTypeInfo`/`RuntimeBlockStateRegistry` | `Block::init()` + 数字 ID `$list` | 改方块看 `docs/*/core-api.md` 的注册锚点 |
 | 世界 | `pocketmine\world\World` | `Level` + `LevelProviderManager::addProvider` | 概念一致，类名不同 |

@@ -148,7 +148,7 @@
 
 - 数据包收发可被插件用 `DataPacketReceiveEvent` / `DataPacketSendEvent` 拦截。
 
-- 自定义数据包：参考 §四.4.7。Synapse 已在 1.0.0 从核心移除——核心 `synapse/` 目录已不存在；仅保留 `@deprecated` 的 `Server::getSynapse()` / `isSynapseEnabled()` 转调 **SynapsePM** 插件。
+- 自定义数据包：参考 §四.4.7。Synapse 已在 1.0.0 从核心移除——核心 `synapse/` 目录已不存在；仅保留 `@deprecated` 的 `Server::isSynapseEnabled()` 用于判断 SynapsePM 插件是否加载（`getSynapse()` 方法在 1.0.0 已被移除，勿直接调用）。
 
 ## 七、版本破坏性变更速记
 

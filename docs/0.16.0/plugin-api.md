@@ -415,7 +415,7 @@ Player 继承链：`Player → Human → Creature → Living → Entity`。以�
 | `sendTranslation($message, array $parameters=[])` | 发送翻译消息（`%` 开头键，会自动本地化） |
 | `sendPopup($message, $subtitle="")` | 发送屏幕中央弹窗（有副标题参数） |
 | `sendTip($message)` | 发送右上角提示（**已废弃**，0.14.2+ 客户端自动重定向到 sendPopup） |
-| `sendTitle($title, $subtitle="")` | （部分版本）发送标题大字 |
+| `sendTitle($title, $subtitle="")` | （部分版本）发送标题大字  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
 | `sendSettings()` | 强制重新下发客户端设置（飞行、自动跳跃等） |
 | `sendAttributes()` | 下发属性（生命、饥饿、速度等）给客户端 |
 | `sendPosition(Vector3 $pos, $yaw=null, $pitch=null, $mode=0, $targets=null)` | 向客户端同步玩家位置 |
@@ -454,13 +454,13 @@ Player 继承链：`Player → Human → Creature → Living → Entity`。以�
 | `heal($amount, EntityRegainHealthEvent $source)` | 治疗（继承自 Entity，需构造事件对象） |
 | `kill()` | 杀死玩家（派发死亡事件、掉落物品） |
 | `getFood()` / `setFood(float $amount)` | 获取/设置饥饿值 |
-| `subtractFood($amount)` | 减少饥饿 |
-| `setFoodEnabled($enabled)` / `getFoodEnabled()` | 开关饥饿系统 |
+| `subtractFood($amount)` | 减少饥饿  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
+| `setFoodEnabled($enabled)` / `getFoodEnabled()` | 开关饥饿系统  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
 | `getExp()` / `getExpLevel()` / `setExp(int)` / `setExpLevel(int)` | 获取/设置经验值 / 等级 |
 | `addExperience(int $exp)` / `addExpLevel(int $level)` | 增加经验 / 等级 |
 | `setExperienceAndLevel(int $exp, int $level)` | 同时设置经验与等级 |
 | `getExpectedExperience()` / `getLevelUpExpectedExperience()` | 升到下一级所需经验 |
-| `getMovementSpeed()` / `setMovementSpeed($amount)` | 获取/设置移动速度 |
+| `getMovementSpeed()` / `setMovementSpeed($amount)` | 获取/设置移动速度  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
 
 #### 效果（药水效果）
 
@@ -683,7 +683,7 @@ Player 继承链：`Player → Human → Creature → Living → Entity`。以�
 | `getMaxStackSize()` | 最大堆叠数 |
 | `getBlock()` | 获取物品对应的方块对象（`Item::get(Item::STONE)->getBlock()`） |
 | `getCustomName()` / `setCustomName(string)` / `clearCustomName()` / `hasCustomName()` | 自定义显示名（彩色用 TextFormat） |
-| `getLore()` / `setLore(array)` | 物品 lore 说明文字 |
+| `getLore()` / `setLore(array)` | 物品 lore 说明文字  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
 | `hasEnchantments()` / `getEnchantments()` / `getEnchantmentLevel(int)` / `addEnchantment(Enchantment)` | 附魔 |
 | `getNamedTag()` / `setNamedTag(CompoundTag)` / `hasCompoundTag()` / `getCompoundTag()` | NBT 标签（给物品附加数据） |
 | `isTool()` / `isArmor()` / `isPickaxe()` / `isAxe()` / `isSword()` / `isShovel()` / `isHoe()` | 工具/护甲类型判断 |
@@ -712,7 +712,7 @@ Player 继承链：`Player → Human → Creature → Living → Entity`。以�
 | `isSolid()` / `isTransparent()` | 是否实心 / 透明 |
 | `canBePlaced()` / `canBeActivated()` | 可否放置 / 可否激活 |
 | `onActivate(Item $item, Player $player=null)` | 被右键激活时的回调 |
-| `onBreak(Item $item)` / `onPlace(Item $item)` | 破坏/放置回调 |
+| `onBreak(Item $item)` / `onPlace(Item $item)` | 破坏/放置回调  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
 | `getBoundingBox()` | 碰撞箱 |
 
 > 常用构造：`new Stone()`、`new Dirt()` 等，每个方块一个类。也常用 `Block::get($id)` 按 ID 创建。
@@ -1189,15 +1189,15 @@ $player->sendMessage(TextFormat::GREEN . "生命:" . TextFormat::RED . $player->
 | `Binary::writeFloat($float)` / `readFloat($str)` | 单精度浮点 |
 | `Binary::writeTriad($triad)` / `readTriad($str)` | 24 位整数 |
 | `Binary::writeVarInt($int)` / `readVarInt($str)` | VarInt 压缩整数 |
-| `Binary::writeString($str)` / `readString($str)` | 带长度前缀字符串 |
+| `Binary::writeString($str)` / `readString($str)` | 带长度前缀字符串  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
 
 ### 10.4 UUID 类
 
 | 方法 | 用处 |
 |---|---|
 | `UUID::fromString($uuid)` / `fromData(...)` | 从字符串/数据创建 UUID |
-| `UUID::fromBinary($str)` / `fromInteger($integer)` | 从二进制/整数创建 |
-| `getVersion()` / `getVariant()` | 版本/变体 |
+| `UUID::fromBinary($str)` / `fromInteger($integer)` | 从二进制/整数创建  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
+| `getVersion()` / `getVariant()` | 版本/变体  ⚠️本版Genisys源码未提供(来自通用PocketMine API参考) |
 | `toString()` | 标准字符串形式 |
 
 ---

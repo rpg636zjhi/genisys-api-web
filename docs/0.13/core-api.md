@@ -15,8 +15,7 @@
 <ver>/
 ├── pocketmine/   # 核心服务器代码（Server/Player/Level/Entity/Item/Block/event/plugin/scheduler/network…）
 ├── raklib/       # RakNet 协议库（UDP 传输层）
-├── spl/          # SPL 扩展库（线程安全日志、类加载器）
-└── synapse/      # Synapse 多服务器互联模块（部分版本）
+└── spl/          # SPL 扩展库（线程安全日志、类加载器）
 ```
 
 `pocketmine/` 关键子目录：`command/`、`event/`、`plugin/`、`scheduler/`、`permission/`、`metadata/`、`level/`、`entity/`、`item/`、`block/`、`inventory/`、`network/`、`nbt/`、`tile/`、`math/`、`utils/`、`resources/`。
@@ -150,7 +149,7 @@
 
 - 数据包收发可被插件用 `DataPacketReceiveEvent` / `DataPacketSendEvent` 拦截。
 
-- 自定义数据包：参考 §四.4.7。Synapse 多服互联模块位于 `synapse/`（见 `synapse/Synapse.php`、`synapse/network/`）。
+- 自定义数据包：参考 §四.4.7。本版本（0.13）无 Synapse 多服互联模块，核心中没有 `synapse/` 目录。
 
 ## 七、版本破坏性变更速记
 

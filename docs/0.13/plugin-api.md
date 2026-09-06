@@ -27,7 +27,7 @@
 8. [权限系统详解](#八权限系统详解)
 9. [元数据系统详解](#九元数据系统详解)
 10. [工具类详解](#十工具类详解)
-11. [网络层与 Synapse 多服互联](#十一网络层与-synapse-多服互联)
+11. [网络层](#十一网络层)
 12. [完整插件示例](#十二完整插件示例)
 13. [附录：常用常量表](#十三附录常用常量表)
 
@@ -38,11 +38,10 @@
 本项目是 **Genisys**（iTX Technologies 出品的 PocketMine-MP 分支），用于搭建 Minecraft PE 服务器。源代码分为四个顶层目录：
 
 ```
-src/
-├── pocketmine/     # 核心服务器代码（主程序、游戏逻辑、API）
-├── raklib/         # RakNet 协议库（UDP 传输层，负责网络通信）
-├── spl/            # SPL 扩展库（线程安全日志、类加载器等底层支持）
-└── synapse/        # Synapse 多服务器互联模块（分布式服务器网络）
+0.13/
+├── pocketmine/   # 核心服务器代码（主程序、游戏逻辑、API）
+├── raklib/       # RakNet 协议库（UDP 传输层，负责网络通信）
+└── spl/          # SPL 扩展库（线程安全日志、类加载器等底层支持）
 ```
 
 ### pocketmine/ 核心模块
@@ -93,15 +92,6 @@ src/
 | `Binary.php` | 二进制读写工具 |
 | `protocol/` | RakNet 各协议包（OPEN_CONNECTION、ACK、DATA_PACKET 等） |
 | `server/` | 服务器实现（SessionManager、Session、ServerHandler、UDPServerSocket 等） |
-
-### synapse/（Synapse 多服务器互联）
-
-| 文件 | 作用 |
-|---|---|
-| `Synapse.php` | Synapse 客户端管理类 |
-| `Player.php` | 通过 Synapse 连接的外部服务器玩家 |
-| `network/` | Synapse 网络协议（SynapseInterface、SynLibInterface、各数据包） |
-| `event/` | Synapse 相关事件 |
 
 ---
 
@@ -1212,7 +1202,7 @@ $player->sendMessage(TextFormat::GREEN . "生命:" . TextFormat::RED . $player->
 
 ---
 
-## 十一、网络层与 Synapse 多服互联
+## 十一、网络层
 
 ### 11.1 网络结构
 
@@ -1245,28 +1235,12 @@ $player->directDataPacket($pk); // 直接发送（不做批处理）
 
 拦截数据包事件：`DataPacketReceiveEvent` / `DataPacketSendEvent`。
 
-### 11.3 Synapse（多服务器互联）
+### 11.3 Synapse（本版本无此模块）
 
-Synapse 允许把多个 Genisys 服务器组成一个网络，由主服务器统一入口。配置在 `genisys.yml` 的 `synapse` 段。
+> 本版本（0.13）**尚未包含** Synapse 多服务器互联模块：核心中没有 `synapse/` 目录，也没有
+> `isSynapseEnabled()` / `getSynapse()` 等 API。Synapse 多服互联从 **0.14.3** 起才作为核心内置模块出现。
 
-| 类 | 作用 |
-|---|---|
-| `synapse\Synapse` | 管理 Synapse 连接（启动/关闭客户端） |
-| `synapse\Player` | 来自其他服务器的玩家（在本地表现为普通玩家对象） |
-| `synapse\network\SynapseInterface` | Synapse 网络接口 |
-| `synapse\network\SynLibInterface` | 本地库接口（主服与子服通信） |
-| `synapse\event\Event` | Synapse 事件基类 |
-
-`Server` 中相关 API：
-
-| 方法 | 用处 |
-|---|---|
-| `isSynapseEnabled()` | Synapse 是否启用 |
-| `getSynapse()` | 获取 Synapse 对象 |
-| `getDServerMaxPlayers()` / `getDServerOnlinePlayers()` | 跨服总人数 |
-| `isDServerEnabled()` / `updateDServerInfo()` | 分布式服务器查询更新 |
-
-### 11.4 RakLib（传输层）
+### 11.3 RakLib（传输层）
 
 | 类 | 作用 |
 |---|---|

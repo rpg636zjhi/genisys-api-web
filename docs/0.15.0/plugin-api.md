@@ -38,11 +38,11 @@
 本项目是 **Genisys**（iTX Technologies 出品的 PocketMine-MP 分支），用于搭建 Minecraft PE 服务器。源代码分为四个顶层目录：
 
 ```
-src/
-├── pocketmine/     # 核心服务器代码（主程序、游戏逻辑、API）
-├── raklib/         # RakNet 协议库（UDP 传输层，负责网络通信）
-├── spl/            # SPL 扩展库（线程安全日志、类加载器等底层支持）
-└── synapse/        # Synapse 多服务器互联模块（分布式服务器网络）
+0.15.0/
+├── pocketmine/   # 核心服务器代码（主程序、游戏逻辑、API）
+├── raklib/       # RakNet 协议库（UDP 传输层，负责网络通信）
+├── spl/          # SPL 扩展库（线程安全日志、类加载器等底层支持）
+└── synapse/      # Synapse 多服务器互联模块（本版本内置）
 ```
 
 ### pocketmine/ 核心模块
